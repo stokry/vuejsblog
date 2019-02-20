@@ -7,6 +7,8 @@
           <div class="container">
             <span class="display-4 h1">Vue.js Blog </span>
             <p class="lead">Nice and simple app...</p>
+            
+       
           </div>
         </div>
       </div>
@@ -15,7 +17,7 @@
 
       <footer class="col-sm-12">
         <hr>
-        <p class="text-center"> <a href="http://www.peterstehlik.com" target="_blank">Peter Stehlík</a> &copy; 2018 </p>
+        <p class="text-center"> <a href="http://www.mijokristp.com" target="_blank">Mijo Kristo</a> &copy; 2019 </p>
       </footer>
     </div>
   </div>
