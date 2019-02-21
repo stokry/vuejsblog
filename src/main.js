@@ -6,12 +6,11 @@ import VueRouter from 'vue-router'
 import PostDetail from './PostDetail.vue'
 import Blog from './Blog.vue'
 
-// ENABLE USE 3RD PARTY PLUGINS
 Vue.use(VueResource);
 Vue.use(VuePaginate);
 Vue.use(VueRouter);
 
-// ENABLE SINGLE PAGE APP ROUTING
+
 const routes = [
   { path: '/', component: Blog },
   { path: '/post/:id', component: PostDetail }
@@ -22,7 +21,6 @@ const router = new VueRouter({
   routes
 })
 
-// INIT APP
 new Vue({
   el:'#app',
   router,

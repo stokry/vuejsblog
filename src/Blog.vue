@@ -1,55 +1,71 @@
 <template>
-     <div>
-  
-  <paginate
-  name="blogs"
-  :list="posts"
-  :per="10"
->
-    
-    <section v-for="blog in paginated('blogs')">
-      <h2>{{ blog.title }}</h2>
-      <router-link :to="'/post/' + blog.id" class="btn btn-primary">read more</router-link>
-      <hr>
-    </section>
-    
-    
+  <div>
+    <input
+      class="form-control"
+      type="text"
+      v-model="searchQuery"
+      placeholder="Search"
+    />
+      <paginate v-if="!filteredResources.length">No results.</paginate> 
 
-</paginate>
-<paginate-links
-  for="blogs"
-  :async="true"
-  :show-step-links="true"
-  :step-links="{
-    next: 'Next',
-    prev: 'Previous'
-  }"
-  :classes="{
-    'ul': 'pagination',
-    'ul > li': 'page-item',
-    'ul > li > a': 'page-link',
-  }"
->
-</paginate-links>
- </div>
+        <paginate v-else="filteredResources" name="filteredResources" :list="filteredResources" :per="10">
+      <section
+        v-bind:key="blog.id"
+        v-for="blog in paginated('filteredResources')"
+      >
+        <h2>{{ blog.title }}</h2>
+        <router-link :to="'/post/' + blog.id" class="btn btn-primary"
+          >read more</router-link
+        >
+        <hr />
+      </section>
+    </paginate>
+    <paginate-links
+      for="filteredResources"
+      :async="true"
+      :show-step-links="true"
+      :step-links="{
+        next: 'Next',
+        prev: 'Previous'
+      }"
+      :classes="{
+        ul: 'pagination',
+        'ul > li': 'page-item',
+        'ul > li > a': 'page-link'
+      }"
+    >
+    </paginate-links>
+  </div>
 </template>
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       posts: [],
-      paginate: ['blogs']
-    }
+      paginate: ["filteredResources"],
+      searchQuery: "",
+    
+    };
   },
-  created(){
-    this.$http.get("http://jsonplaceholder.typicode.com/posts")
+  created() {
+    this.$http
+      .get("https://jsonplaceholder.typicode.com/posts")
       .then(response => response.json(), error => console.log(error))
-      .then(json => this.posts = json, error => console.log(error));
+      .then(json => (this.posts = json), error => console.log(error));
+  },
+computed: {
+    filteredResources() {
+      if (this.searchQuery) {
+        return this.posts.filter((post) => {
+          return post.title.startsWith(this.searchQuery);
+        })
+      } else {
+        return this.posts;
+      }
+    }
   }
-}
+};
 </script>
 
-<style>
-  
-</style>
+<style></style>

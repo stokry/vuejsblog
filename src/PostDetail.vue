@@ -29,13 +29,13 @@ export default {
   }
  },
  created() {
-   this.$http.get("http://jsonplaceholder.typicode.com/posts/" + this.$route.params.id)
+   this.$http.get("https://jsonplaceholder.typicode.com/posts/" + this.$route.params.id)
     .then(response => response.json(), error => console.log(error))
     .then(json => this.post = json, error => console.log(error));
  },
  methods: {
  showComments(){
-   this.$http.get("http://jsonplaceholder.typicode.com/comments?postId=" + this.$route.params.id)
+   this.$http.get("https://jsonplaceholder.typicode.com/comments?postId=" + this.$route.params.id)
      .then(response => response.json(), error => console.log(error))
      .then(json => this.comments = json, error => console.log(error))
      .then(() => this.showCommentBox = true);
