@@ -9,16 +9,22 @@
       <paginate v-if="!filteredResources.length">No results.</paginate> 
 
         <paginate v-else="filteredResources" name="filteredResources" :list="filteredResources" :per="10">
-      <section
-        v-bind:key="blog.id"
-        v-for="blog in paginated('filteredResources')"
-      >
-        <h2>{{ blog.title }}</h2>
-        <router-link :to="'/post/' + blog.id" class="btn btn-primary"
-          >read more</router-link
-        >
-        <hr />
-      </section>
+     
+     
+          <div class="post-preview"   v-bind:key="blog.id"  v-for="blog in paginated('filteredResources')" >
+          <a href="post.html">
+            <h2 class="post-title">
+             {{ blog.title }}
+            </h2>
+            
+          </a>
+          <p class="post-meta">
+          
+           <router-link :to="'/post/' + blog.id" class="btn btn-primary" >read more</router-link>
+           </p>
+        </div>
+        <hr>
+      
     </paginate>
     <paginate-links
       for="filteredResources"

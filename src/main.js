@@ -5,6 +5,7 @@ import VuePaginate from 'vue-paginate'
 import VueRouter from 'vue-router'
 import PostDetail from './PostDetail.vue'
 import Blog from './Blog.vue'
+require('./assets/clean-blog.css')
 
 Vue.use(VueResource);
 Vue.use(VuePaginate);
