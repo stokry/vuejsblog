@@ -5,8 +5,8 @@
 
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><router-link :to="'/'">Home</router-link></li>
-      <li class="breadcrumb-item active" aria-current="page">{{ post.title }}</li>
+     <li class="breadcrumb-item"> <router-link  v-if="$routerHistory.hasPrevious()" :to="{ path: $routerHistory.previous().path }"> Back </router-link></li>
+     <li class="breadcrumb-item active" aria-current="page">{{ post.title }}</li>
     </ol>
   </nav>
 
