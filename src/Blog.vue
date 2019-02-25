@@ -6,6 +6,7 @@
       v-model="searchQuery"
       placeholder="Search"
     />
+    <small>Total number of posts: {{ resultCount }}</small>
       <paginate v-if="!filteredResources.length">No results.</paginate> 
 
         <paginate v-else="filteredResources" name="filteredResources" :list="filteredResources" :per="10">
@@ -41,6 +42,7 @@
       }"
     >
     </paginate-links>
+
   </div>
 </template>
 
@@ -69,8 +71,12 @@ computed: {
       } else {
         return this.posts;
       }
-    }
+    },
+    resultCount () {
+      return this.posts && this.posts.length
   }
+  },
+
 };
 </script>
 
