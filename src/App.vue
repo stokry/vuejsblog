@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+   <bar-loader class="custom-class"  :loading="loading" :size="150" :sizeUnit="px"></bar-loader>
      <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
@@ -90,6 +91,14 @@
 </template>
 
 <script>
+ import { BarLoader } from '@saeris/vue-spinners'
+
+export default {
+  components: {
+    BarLoader
+  },
+
+}
 
 </script>
 
