@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="element">
     <input
       class="form-control"
       type="text"
@@ -30,7 +30,9 @@
     <paginate-links
       for="filteredResources"
       :async="true"
+      :hide-single-page="true"
       :show-step-links="true"
+      v-scroll-to="'#element'"
       :step-links="{
         next: 'Next',
         prev: 'Previous'
@@ -76,6 +78,12 @@ computed: {
       return this.posts && this.posts.length
   }
   },
+  
+  methods: { 
+           scrollToTop() {
+                window.scrollTo(0,0);
+           }
+        }
 
 };
 </script>
